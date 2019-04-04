@@ -3,8 +3,8 @@
 * install
 git clone https://github.com/josieric/PyCrypt.git  
 cd PyCrypt/PyCrypt  
-python setup.py PyCrypt  
-pip install sdist/PyCrypt-0.1.tar.gz  
+python setup.py sdist  
+pip install dist/PyCrypt-0.1.tar.gz  
 
 * import module in python & use it  
 from PyCrypt import AESCipher  
