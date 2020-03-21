@@ -16,12 +16,12 @@ class AESCipher:
     def encrypt( self, raw ):
         raw = pad(raw,self.BS)
         iv = Random.new().read( AES.block_size )
-        cipher = AES.new( self.key, AES.MODE_CBC, iv )
-        return base64.b64encode( iv + cipher.encrypt( raw ) ).decode()
+        cipher = AES.new( self.key.encode(), AES.MODE_CBC, iv )
+        return base64.b64encode( iv + cipher.encrypt( raw.encode() ) ).decode()
     def decrypt( self, enc ):
         enc = base64.b64decode(enc)
         iv = enc[:self.BS]
-        cipher = AES.new(self.key, AES.MODE_CBC, iv )
+        cipher = AES.new(self.key.encode(), AES.MODE_CBC, iv )
         return unpad(cipher.decrypt( enc[self.BS:] ), self.BS).decode()
 
 
